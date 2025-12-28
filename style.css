@@ -1,0 +1,81 @@
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+
+:root {
+    --primary-purple: #9c27b0;
+    --light-purple: #f3e5f5;
+    --border-color: #d1c4e9;
+    --text-color: #4a148c;
+    --transition-speed: 0.4s;
+}
+
+body { 
+    transition: background var(--transition-speed), color var(--transition-speed); 
+    background: var(--light-purple); 
+    color: var(--text-color); 
+    overflow-x: hidden; 
+}
+
+#modeToggle { 
+    position:fixed; top:20px; right:20px; z-index:1000; 
+    padding:10px 20px; border-radius:20px; border:none; 
+    background: var(--primary-purple); color:white; 
+    cursor:pointer; font-weight:bold; transition: 0.3s;
+}
+
+#modeToggle:hover { transform: scale(1.05); }
+
+.profile-section { text-align: center; margin-bottom: 30px; }
+.profile-image-container { 
+    position: relative; 
+    width: 180px; 
+    height: 180px; 
+    margin: 0 auto 20px; 
+}
+.profile-pic { 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    border: 4px solid var(--primary-purple); 
+    position: relative; 
+    z-index: 2; 
+}
+.glow { 
+    position: absolute; top:-5px; left:-5px; right:-5px; bottom:-5px; 
+    border-radius: 50%; background: var(--primary-purple); 
+    z-index: 1; filter: blur(8px); opacity: 0.5; 
+}
+
+.container { max-width: 850px; margin: 0 auto; padding: 20px; }
+.info-box { 
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 25px; border-radius: 15px; 
+    border: 2px solid var(--border-color); 
+    margin-bottom: 25px; 
+}
+
+.skill { margin-bottom: 15px; }
+.skill p { display: flex; justify-content: space-between; margin-bottom: 5px; }
+.skill-bar { width: 100%; height: 10px; background: #eee; border-radius: 5px; }
+.skill-fill { height: 100%; background: var(--primary-purple); border-radius: 5px; }
+
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.project-card { 
+    padding: 15px; background: #fff; 
+    border: 1px solid var(--border-color); 
+    border-left: 5px solid var(--primary-purple); 
+    border-radius: 8px; font-weight: 600; text-align: center; 
+    color: var(--primary-purple); 
+}
+
+/* Dark Mode Theme */
+body.dark-mode { background: #050005; color: #e0e0e0; }
+body.dark-mode .info-box { background: rgba(20, 0, 0, 0.85); border-color: #ff3d00; }
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 { color: #ff3d00; }
+body.dark-mode .skill-fill { background: #ff3d00; }
+body.dark-mode .project-card { background: #1a0000; color: #ff3d00; border-color: #ff3d00; }
+body.dark-mode #modeToggle { background: #ff3d00; }
+body.dark-mode .profile-pic, body.dark-mode .glow { background: #ff3d00; border-color: #ff3d00; }
+
+#backgroundCanvas { position: fixed; top:0; left:0; z-index: -1; width:100%; height:100%; }
+footer { text-align: center; padding: 20px; }
