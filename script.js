@@ -7,6 +7,7 @@ canvas.height = window.innerHeight;
 let particlesArray = [];
 const drops = Array(Math.floor(window.innerWidth / 18)).fill(1);
 
+// Particle class for background
 class Particle {
     constructor() {
         this.x = Math.random() * canvas.width;
@@ -35,9 +36,9 @@ function initParticles() {
 }
 
 function drawMatrix() {
-    ctx.fillStyle = "rgba(5, 0, 5, 0.1)"; 
+    ctx.fillStyle = "rgba(5, 0, 5, 0.1)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#ff3d00"; 
+    ctx.fillStyle = "#ff3d00";
     ctx.font = "18px monospace";
     for (let i = 0; i < drops.length; i++) {
         const text = Math.floor(Math.random() * 2);
@@ -76,15 +77,44 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
+// Dark mode toggle
 document.getElementById('modeToggle').addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
 });
 
+// Resize canvas
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     initParticles();
 });
 
+// Initialize particles
 initParticles();
 animate();
+
+/* ====== إضافات جديدة للحركات ====== */
+
+// 1️⃣ حركة الصورة عند المرور بالماوس
+const profilePic = document.querySelector('.profile-pic');
+profilePic.addEventListener('mouseenter', () => {
+    profilePic.style.transform = "scale(1.1)";
+    profilePic.style.boxShadow = "0 0 20px #9c27b0, 0 0 40px #9c27b0";
+});
+profilePic.addEventListener('mouseleave', () => {
+    profilePic.style.transform = "scale(1)";
+    profilePic.style.boxShadow = "0 0 10px #9c27b0";
+});
+
+// 2️⃣ حركة الحدود للـ info-box عند المرور
+const infoBoxes = document.querySelectorAll('.info-box');
+infoBoxes.forEach(box => {
+    box.addEventListener('mouseenter', () => {
+        box.style.borderColor = "#ff3d00";
+        box.style.boxShadow = "0 0 15px rgba(255,61,0,0.5)";
+    });
+    box.addEventListener('mouseleave', () => {
+        box.style.borderColor = "var(--border-color)";
+        box.style.boxShadow = "none";
+    });
+});
