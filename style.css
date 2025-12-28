@@ -79,3 +79,35 @@ body.dark-mode .profile-pic, body.dark-mode .glow { background: #ff3d00; border-
 
 #backgroundCanvas { position: fixed; top:0; left:0; z-index: -1; width:100%; height:100%; }
 footer { text-align: center; padding: 20px; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .container {
+        padding: 15px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-image-container {
+        width: 140px;
+        height: 140px;
+    }
+
+    #modeToggle {
+        top: 10px;
+        right: 10px;
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+}
